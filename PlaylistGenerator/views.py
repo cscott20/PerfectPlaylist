@@ -16,14 +16,21 @@ def process_sentence(request):
         openai.api_key = api_key
         data = json.loads(request.body.decode('utf-8'))
 
-        sentence = data['sentence']
-        example= "I want a playlist for working out that features high-energy, upbeat songs from the 80s and 90s."
+        description = data['description']
 
+        system_prompt = """
+            Your role is to Generate a list of songs and a playlist title based on the user's description.
+            Your response should look like : {"title": "Playlist Title", "songs": [{"name": "Song Name", "link": "Spotify_Link"}, ... ]}
+            The link should be a link to the song on spotify. Verify that the link is a valid link to a spotify song before adding it to the playlist.
+            Return in JSON format, with no extra text before or after the json object.
+            You must never include duplicate songs on the same playlist, even if the featured artist has changed.
+            Include a minimum of 10 songs, and a maximum of 20.
+        """
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "Your role is to Generate a list of songs and a playlist title based on the user's description.  Your response should be a playlist title, followed by a numbered list of songs, and that's it."},
-                {"role": "user", "content": sentence},
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": description},
             ]
         )
 
