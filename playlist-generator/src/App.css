@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+  animation: bgAnimation 20s ease infinite alternate;
+}
+
+@keyframes bgAnimation {
+  0% {
+    background: linear-gradient(45deg, #4b0082, #ff69b4);
+  }
+  25% {
+    background: linear-gradient(45deg, #ff69b4, #1e90ff);
+  }
+  50% {
+    background: linear-gradient(45deg, #1e90ff, #ffd700);
+  }
+  75% {
+    background: linear-gradient(45deg, #ffd700, #ff8c00);
+  }
+  100% {
+    background: linear-gradient(45deg, #ff8c00, #4b0082);
+  }
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+input {
+  width: 80%;
+  height: 40px;
+  margin: 20px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+}
+
+button {
+  width: 60px;
+  height: 40px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 5px;
+  background: #4b0082;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
